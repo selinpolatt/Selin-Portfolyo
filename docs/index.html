@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Selin Nur Polat | Portfolyo</title>
+  <meta name="description" content="Havacılık ve Uzay Mühendisliği öğrencisi – Portfolyo" />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1b33;
+      --text:#eaf0ff;
+      --muted:#b7c3e6;
+      --line:rgba(255,255,255,.10);
+      --accent:#6ea8ff;
+      --chip:#14264a;
+      --shadow: 0 12px 32px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1080px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0; background:radial-gradient(1100px 700px at 10% 0%, #162954 0%, var(--bg) 55%); color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;}
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px;}
+    /* --- Banner / Carousel --- */
+.banner{
+  position:relative;
+  margin-top:10px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.03);
+  overflow:hidden;
+  min-height:200px;
+}
+
+.banner-track{
+  display:flex;
+  width:100%;
+  will-change: transform;
+  transition: transform 420ms ease;
+}
+
+.banner-slide{
+  flex:0 0 100%;
+  min-height:200px;
+  display:flex;
+}
+
+.banner-slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* oklar */
+.banner-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:38px;
+  height:38px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(11,18,32,.55);
+  color:#eaf0ff;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  line-height:1;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.25);
+}
+
+.banner-btn:hover{ transform:translateY(-50%) scale(1.03); }
+.banner-btn:active{ transform:translateY(-50%) scale(0.98); }
+
+.banner-btn.prev{ left:10px; }
+.banner-btn.next{ right:10px; }
+
+/* noktalar */
+.banner-dots{
+  position:absolute;
+  left:50%;
+  bottom:10px;
+  transform:translateX(-50%);
+  display:flex;
+  gap:7px;
+  padding:8px 10px;
+  border-radius:999px;
+  background:rgba(11,18,32,.45);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(8px);
+}
+
+.banner-dot{
+  width:8px;
+  height:8px;
+  border-radius:99px;
+  border:1px solid rgba(255,255,255,.35);
+  background:rgba(255,255,255,.10);
+  cursor:pointer;
+}
+.banner-dot.active{
+  background:rgba(110,168,255,.85);
+  border-color: rgba(110,168,255,.95);
+  box-shadow:0 0 0 3px rgba(110,168,255,.18);
+}
+
+@media (max-width: 520px){
+  .banner-btn{ width:34px; height:34px; font-size:20px; }
+}
+
+
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      background:rgba(11,18,32,.65);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 0;
+      gap:14px;
+    }
+    .brand{display:flex; flex-direction:column; line-height:1.15}
+    .brand b{font-size:14px; letter-spacing:.3px}
+    .brand span{font-size:12px; color:var(--muted)}
+    .menu{display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-end}
+    .menu a{
+      font-size:12px; padding:8px 10px; border-radius:999px;
+      border:1px solid transparent;
+      color:var(--muted);
+    }
+    .menu a:hover{border-color:var(--line); color:var(--text)}
+
+    /* HERO */
+    .hero{padding:44px 0 18px}
+    .hero-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:18px;}
+    @media (max-width: 900px){ .hero-grid{grid-template-columns:1fr;} }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-left{padding:26px}
+    .kicker{display:inline-flex; gap:8px; align-items:center; font-size:12px; color:var(--muted)}
+    .dot{width:8px; height:8px; border-radius:99px; background:var(--accent); box-shadow:0 0 0 3px rgba(110,168,255,.15)}
+    h1{margin:10px 0 10px; font-size:34px; letter-spacing:.2px}
+    .subtitle{color:var(--muted); line-height:1.6; margin:0 0 16px}
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 0}
+    .chip{background:var(--chip); border:1px solid var(--line); color:var(--muted); font-size:12px; padding:8px 10px; border-radius:999px}
+    .btns{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:10px 14px; border-radius:12px; font-size:13px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      cursor:pointer;
+    }
+    .btn.primary{background:linear-gradient(135deg, rgba(110,168,255,.25), rgba(110,168,255,.08)); border-color:rgba(110,168,255,.35)}
+    .btn:hover{transform: translateY(-1px)}
+    .btn:active{transform: translateY(0)}
+
+    /* HERO RIGHT */
+    .hero-right{padding:18px; display:grid; gap:12px}
+    .mini{
+      padding:16px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:rgba(15,27,51,.55);
+    }
+    .mini h3{margin:0 0 8px; font-size:13px; color:var(--text)}
+    .mini p{margin:0; font-size:12px; color:var(--muted); line-height:1.55}
+    .media{
+      border-radius:16px;
+      border:1px dashed rgba(255,255,255,.20);
+      background:rgba(255,255,255,.03);
+      min-height:220px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:14px;
+      color:var(--muted);
+      overflow:hidden;
+    }
+
+    /* SECTIONS */
+    section{padding:18px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin:12px 0;
+    }
+    .section-title h2{margin:0; font-size:18px}
+    .section-title span{font-size:12px; color:var(--muted)}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    @media (max-width: 900px){ .grid-2{grid-template-columns:1fr;} }
+    .p16{padding:16px}
+    .list{margin:0; padding:0; list-style:none; display:grid; gap:10px}
+    .item{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius:16px;
+      padding:14px;
+    }
+    .item b{display:block; font-size:13px; margin-bottom:6px}
+    .item p{margin:0; font-size:12px; color:var(--muted); line-height:1.55}
+
+    /* PROJECTS */
+    .project{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      padding:16px;
+    }
+    @media (max-width: 900px){ .project{grid-template-columns:1fr;} }
+    .proj-head{display:flex; align-items:flex-start; justify-content:space-between; gap:10px}
+    .tag{font-size:11px; color:var(--muted); border:1px solid var(--line); background:rgba(255,255,255,.03); padding:6px 8px; border-radius:999px}
+    .kv{display:grid; gap:10px; margin-top:10px}
+    .kv .k{font-size:12px; color:var(--muted); margin:0}
+    .kv .v{font-size:12px; color:var(--text); margin:0; line-height:1.55}
+    .proj-media{display:grid; gap:10px;}
+
+    .ph{
+      border-radius:16px;
+      border:1px dashed rgba(255,255,255,.22);
+      background:rgba(255,255,255,.03);
+      min-height:160px;
+      display:flex; align-items:center; justify-content:center;
+      text-align:center;
+      padding:12px;
+      color:var(--muted);
+      overflow:hidden;
+    }
+    .ph img{max-width:100%; height:auto; display:block}
+    .inputrow{display:grid; gap:10px}
+    .inputrow input{
+      width:100%;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+      outline:none;
+      font-size:12px;
+    }
+    .note{font-size:11px; color:var(--muted); line-height:1.5}
+
+    /* Project 1: video sağda küçük */
+    .project.p1{ grid-template-columns: 1.35fr 0.65fr; align-items:start; }
+    .project.p1 .proj-media{ justify-self:end; max-width:360px; width:100%; }
+    .project.p1 video{ width:100%; height:auto; max-height:220px; display:block; }
+    @media (max-width: 900px){
+      .project.p1{ grid-template-columns:1fr; }
+      .project.p1 .proj-media{ max-width:none; justify-self:stretch; }
+      .project.p1 video{ max-height:none; }
+    }
+
+    /* CERTS interactive */
+    .cert-item{ cursor:pointer; transition: transform .12s ease, border-color .12s ease; }
+    .cert-item:hover{ transform: translateY(-1px); border-color: rgba(110,168,255,.35); }
+    .cert-item.active{ border-color: rgba(110,168,255,.55); box-shadow: 0 0 0 3px rgba(110,168,255,.12); }
+
+    /* FOOTER */
+    footer{padding:22px 0 36px; color:var(--muted); font-size:12px}
+    .line{height:1px; background:var(--line); margin:14px 0}
+    .lead-item{
+  display:grid;
+  grid-template-columns: 1fr 160px;
+  gap:14px;
+  align-items:center;
+}
+
+.lead-media{
+  justify-self:end;
+  width:160px;
+  height:110px;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.03);
+}
+
+.lead-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+@media (max-width: 700px){
+  .lead-item{ grid-template-columns: 1fr; }
+  .lead-media{ width:100%; height:180px; justify-self:stretch; }
+}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand">
+        <b>Selin Nur Polat</b>
+        <span>Havacılık ve Uzay Mühendisliği • Portfolyo</span>
+      </div>
+      <nav class="menu">
+        <a href="#about">Hakkımda</a>
+        <a href="#skills">Yetkinlikler</a>
+        <a href="#projects">Projeler</a>
+        <a href="#leadership">Liderlik</a>
+        <a href="#certs">Sertifikalar</a>
+        <a href="#contact">İletişim</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div class="card hero-left">
+        <h1>Selin Nur Polat</h1>
+        <p class="subtitle">
+          Adana Alparslan Türkeş Bilim ve Teknoloji Üniversitesi’nde Havacılık ve Uzay Mühendisliği 4. sınıf öğrencisiyim. 
+          Öğrendiklerimi yalnızca teoride bırakmayıp proje süreçlerine taşıyan; problem tanımlama, sistematik ilerleme ve teknik dokümantasyon disiplinine önem veren bir mühendis adayıyım.
+          Hedefim, ekip içinde sorumluluk alarak sahada karşılığı olan, ölçülebilir çıktılar üreten havacılık projelerinde aktif rol almak.
+        </p>
+        <div class="btns">
+          <a class="btn primary" href="Selin Nur Polat CV.pdf" target="_blank" rel="noreferrer">CV’yi Aç (PDF)</a>
+          <a class="btn" href="#projects">Projeleri Gör</a>
+          <a class="btn" href="#contact">İletişime Geç</a>
+        </div>
+
+        <div class="chips">
+          <span class="chip">MATLAB</span>
+          <span class="chip">ANSYS</span>
+          <span class="chip">SolidWorks</span>
+          <span class="chip">CATIA</span>
+          <span class="chip">AutoCAD</span>
+          <span class="chip">Excel</span>
+          <span class="chip">Arduino</span>
+          <span class="chip">Sinyal İşleme (ilgi)</span>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="mini">
+          <h3>İletişim</h3>
+          <p>📍 Seyhan / Adana</p>
+          <p>✉️ selinpolat67@gmail.com</p>
+          <p>☎️ 0535 053 8808</p>
+        </div>
+
+        <div class="media" title="Profil / etkinlik fotoğrafı">
+          <img src="Görseller/profil.jpg" alt="Profil fotoğrafı"
+               style="width:100%; height:100%; object-fit:cover; border-radius:16px;" />
+        </div>
+
+        <div class="mini">
+          <h3>Tanıtım Videosu</h3>
+          <p class="note">PDF’de QR kullanıyordun; web’de video linkini buraya ekleyebilirsin.</p>
+          <p style="margin-top:10px">
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Tanıtım Videosu Linki</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Hakkımda</h2>
+      </div>
+      <div class="card p16">
+        <p class="subtitle" style="margin:0">
+          2001 yılında Antalya’da doğdum. 2021’de eğitim hayatım için Konya’dan Adana’ya gelerek Adana Alparslan Türkeş Bilim ve Teknoloji Üniversitesi’nde Havacılık ve Uzay Mühendisliği yolculuğuma başladım.
+           Bir yıl hazırlık eğitimimi tamamladıktan sonra bölüm derslerime geçtim. 
+           Üniversitenin 2. sınıfında arkadaşımla birlikte Endüstriyel Proje Geliştirme Topluluğu’nu kurduk ve kurulduğu günden bu yana başkan yardımcılığı görevini yürütüyorum. Bu süreçte topluluk çalışmalarımız kapsamında gönüllü stajlar yaparak hem ekip çalışması hem de proje üretme kültürünü sahada deneyimleme fırsatı buldum. Eğitim hayatım boyunca alanımla ilgili birçok eğitim ve seminere katılarak kendimi sürekli geliştirmeye odaklandım.
+            Şu anda 4. sınıf öğrencisi olarak hedefim; yetkin mühendislerle birlikte çalışabileceğim, sorumluluk alarak gerçek projelerde değer üretebileceğim bir ortamda kendimi daha da ileri taşımak.
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Yetkinlikler</h2>
+      </div>
+      <div class="grid-2">
+        <div class="card item">
+          <b>Teknik Yazılımlar</b>
+          <p>MATLAB, ANSYS, SolidWorks, CATIA, AutoCAD, MS Excel</p>
+        </div>
+        <div class="card item">
+          <b>Donanım / Prototipleme</b>
+          <p>Arduino (sensör okuma, temel kontrol uygulamaları)</p>
+        </div>
+        <div class="card item">
+          <b>Analiz</b>
+          <p>Veri toplama, temel sinyal işleme yaklaşımı, raporlama</p>
+        </div>
+        <div class="card item">
+          <b>Soft Skills</b>
+          <p>Ekip çalışması, planlama, iletişim, dokümantasyon</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Projeler</h2>
+      </div>
+
+      <!-- Project 1 -->
+      <article class="card project p1" style="margin-bottom:14px">
+        <div>
+          <div class="proj-head">
+            <div>
+              <b style="font-size:14px">Ball Balance System</b>
+              <div class="tag">Kontrol Odaklı Sistem</div>
+            </div>
+          </div>
+
+          <div class="kv">
+            <div><p class="k">Amaç</p><p class="v">Topun platform üzerinde istenen hedef noktada dengede tutulması.</p></div>
+            <div><p class="k">Kapsam / İçerik</p><p class="v">Konum verisinin sensör/görüntü ile elde edilmesi; hedef–mevcut farkından hata hesabı; geri beslemeli kontrol mantığıyla aktüatör sürme; kararlılık ve tepki iyileştirme.</p></div>
+            <div><p class="k">Benim Katkım</p><p class="v">Sistem kurgusu, kontrol yaklaşımı, test ederek parametre ayarı ve sonuçların dokümantasyonu.</p></div>
+            <div><p class="k">Çıktı</p><p class="v">Hedef noktası değiştiğinde topu farklı konumlarda dengeleyebilen prototip ve teknik özet.</p></div>
+          </div>
+        </div>
+
+        <div class="proj-media">
+          <div class="card p16" style="border-radius:16px">
+            <b style="font-size:13px">Demo Video</b>
+            <video controls preload="metadata" style="width:100%; border-radius:14px; margin-top:10px;">
+              <source src="Görseller/ball-balance.mp4" type="video/mp4" />
+              Tarayıcınız video etiketini desteklemiyor.
+            </video>
+            <p class="note" style="margin-top:10px;">Not: Video dosyası site klasöründe <b>Görseller</b> altında bulunmalıdır.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="card project">
+        <div>
+          <div class="proj-head">
+            <div>
+              <b style="font-size:14px">Mixture System</b>
+              <div class="tag">Süreç / Otomasyon Mantığı</div>
+            </div>
+          
+          </div>
+
+          <div class="kv">
+            <div><p class="k">Amaç</p><p class="v">Belirlenen oranlara göre karışım sürecini yönetmek ve çıktıyı takip etmek.</p></div>
+            <div><p class="k">Kapsam / İçerik</p><p class="v">Girdi parametreleri ve süreç akışı; temel otomasyon/izleme mantığı; ölçüm ve raporlama.</p></div>
+            <div><p class="k">Benim Katkım</p><p class="v">Süreç tasarımı, kontrol/izleme yaklaşımı ve dokümantasyon.</p></div>
+            <div><p class="k">Çıktı</p><p class="v">Süreç adımlarını tarifleyen doküman ve prototip yaklaşımı.</p></div>
+          </div>
+        </div>
+
+        <div class="proj-media">
+          <div class="ph" id="mix-photo">
+            <img src="Görseller/mixturesystem.jpg" alt="Mixture System Proje Fotoğrafı"
+                 style="width:100%; height:100%; object-fit:cover; border-radius:16px;" />
+          </div>
+
+        
+
+          
+        </div>
+      </article>
+
+ </section>
+
+  <!-- LEADERSHIP -->
+  <section id="leadership">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Liderlik</h2>
+        
+      </div>
+      <div class="card p16">
+        <ul class="list">
+         <li class="item lead-item">
+  <div>
+    <b>Endüstriyel Proje Geliştirme Kulübü – Başkan Yardımcısı (2024–…)</b>
+    <p>• Ekip koordinasyonu ve görev takibi<br/>• Proje planlama ve çıktıların düzenli dokümantasyonu<br/>• Çalışma/etkinlik organizasyonu</p>
+  </div>
+
+  <div class="lead-media">
+    <img src="Görseller/epge.jpeg" alt="Liderlik görseli">
+  </div>
+</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTS -->
+  <section id="certs">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Sertifikalar / Eğitimler</h2>
+        
+      </div>
+
+      <div class="grid-2">
+        <!-- SOL: Liste -->
+        <div class="card p16">
+          <b style="font-size:13px">Sertifikalar / Eğitimler</b>
+          <ul class="list" style="margin-top:12px">
+
+            <!-- Görselleri buradan ayarla: data-img="Görseller/sertifikalar/xxx.jpg" -->
+          
+            <li class="item cert-item"
+                data-key="fikrim-gelecek-2025"
+                data-title="Fikrim Gelecek Hackathonu — UNDP / T.C. Dışişleri Bakanlığı / Türkiye Belediyeler Birliği (TBB)"
+                data-date="26 Kasım 2025"
+                data-img="Görseller/fikrimgelecek.jpg"
+                data-link="https://verified.sertifier.com/en/verify/48358768209958/">
+              <b>Fikrim Gelecek Hackathonu — UNDP / T.C. Dışişleri Bakanlığı / Türkiye Belediyeler Birliği (TBB)</b>
+              <p>26 Kasım 2025</p>
+            </li>
+
+            <li class="item cert-item"
+                data-key="teknofest-2025"
+                data-title="Geleceğin Sürdürülebilir Şehirleri Hackathonu — Teknofest Başarı Sertifikası / T.C. Sanayi ve Teknoloji Bakanlığı / Türkiye Teknoloji Takımı"
+                data-date="17 Kasım 2025"
+                data-img="Görseller/teknofest.jpg"
+                data-link="https://drdogrulama.sanayi.gov.tr/tr/verify/68158052637310/">
+              <b>Geleceğin Sürdürülebilir Şehirleri Hackathonu — Teknofest Başarı Sertifikası / T.C. Sanayi ve Teknoloji Bakanlığı / Türkiye Teknoloji Takımı</b>
+              <p>17 Kasım 2025</p>
+            </li>
+            <li class="item cert-item"
+                data-key="tubitak2237a-2026"
+                data-title="Endüstride Dijital Dönüşüm ve Yapay Zekâ Sistem Entegrasyonu — TÜBİTAK 2237-A"
+                data-date="2–6 Şubat 2026"
+                data-img="Görseller/tubitak26.jpg"
+                data-link="">
+              <b>Endüstride Dijital Dönüşüm ve Yapay Zekâ Sistem Entegrasyonu — TÜBİTAK 2237-A</b>
+              <p>2–6 Şubat 2026</p>
+            </li>
+            <li class="item cert-item"
+                data-key="unides-2025"
+                data-title="ÜNİDES — T.C. Gençlik ve Spor Bakanlığı"
+                data-date="Aralık 2025"
+                data-img="Görseller/unides.jpg"
+                data-link="">
+              <b>ÜNİDES — T.C. Gençlik ve Spor Bakanlığı</b>
+              <p>Aralık 2025</p>
+            </li>
+<li class="item cert-item"
+                data-key="btk-ai-2026"
+                data-title="Yapay Zekâya Giriş — BTK Akademi"
+                data-date="4 Şubat 2026"
+                data-img="Görseller/btk.jpg"
+                data-link="">
+              <b>Yapay Zekâya Giriş — BTK Akademi</b>
+              <p>4 Şubat 2026</p>
+            </li>
+
+            <li class="item cert-item"
+                data-key="ai4change-2025"
+                data-title="AI4Change Programı"
+                data-date="Temmuz 2025 – Ağustos 2025"
+                data-img="Görseller/ai4.jpg"
+                data-link="https://verified.sertifier.com/en/verify/46769801699744/">
+              <b>AI4Change Programı</b>
+              <p>Temmuz 2025 – Ağustos 2025</p>
+            </li>
+
+            <li class="item cert-item"
+                data-key="tubitak2237a-2024"
+                data-title="Endüstride Dijital Farkındalık ve Dönüşüm Eğitimi — TÜBİTAK 2237-A"
+                data-date="16–19 Eylül 2024"
+                data-img="Görseller/tubitak1.jpg"
+                data-link="">
+              <b>Endüstride Dijital Farkındalık ve Dönüşüm Eğitimi — TÜBİTAK 2237-A</b>
+              <p>16–19 Eylül 2024</p>
+            </li>
+
+          </ul>
+        </div>
+
+        <!-- SAĞ: Sadece görsel + link -->
+        <div class="card p16" id="cert-panel">
+          <b style="font-size:13px">Sertifika Önizleme</b>
+          <p class="note" style="margin-top:10px">Soldan seçince görsel burada görünür. Altına sertifika linkini ekleyebilirsin.</p>
+
+          <div class="ph" id="cert-preview" style="min-height:260px; margin-top:12px">
+            <div>
+              <b style="color:var(--text)">Görsel seçilmedi</b><br/>
+              <span style="font-size:12px">Sertifikaya tıklayınca burada görünecek.</span>
+            </div>
+          </div>
+
+          <div class="card p16" style="border-radius:16px; margin-top:12px">
+            <b style="font-size:13px">Sertifika Linki (PDF/Drive)</b>
+            <p class="note">PDF linki / Drive linki / doğrulama linki.</p>
+            <div class="inputrow">
+              <input id="cert-link-url" placeholder="Link (https://...)" />
+              <a class="btn primary" id="cert-open-link" href="#" target="_blank" rel="noreferrer">Linki Aç</a>
+              <button class="btn" id="cert-set-link" type="button">Kaydet</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>İletişim</h2>
+      </div>
+      <div class="grid-2">
+        <div class="card p16">
+          <b style="font-size:13px">İletişim Bilgileri</b>
+          <p class="note" style="margin-top:10px">
+            ✉️ selinpolat67@gmail.com<br/>
+            ☎️ 0535 053 8808<br/>
+            📍 Seyhan / Adana
+          </p>
+          <div class="btns" style="margin-top:12px">
+            <a class="btn" href="mailto:selinpolat67@gmail.com">E-posta Gönder</a>
+           <a class="btn" href="https://www.linkedin.com/in/selin-nur-polat-b36828206/" target="_blank" rel="noreferrer">LinkedIn</a>
+
+          </div>
+        </div>
+
+        <div class="card p16">
+          <b style="font-size:13px">Medya Alanı</b>
+          <p class="note" style="margin-top:10px">
+          </p>
+          <div class="banner" aria-label="Medya banner">
+  <div class="banner-track" id="bannerTrack">
+    <div class="banner-slide">
+      <img src="Görseller/undpben.jpg" alt="Banner görsel 1">
+    </div>
+    <div class="banner-slide">
+      <img src="Görseller/unidesben.jpg" alt="Banner görsel 2">
+    </div>
+    <div class="banner-slide">
+      <img src="Görseller/undp2.jpg" alt="Banner görsel 3">
+    </div>
+    <div class="banner-slide">
+      <img src="Görseller/tubitak26.jpeg" alt="Banner görsel 4">
+    </div>
+  </div>
+
+  <button class="banner-btn prev" type="button" aria-label="Önceki" id="bannerPrev">‹</button>
+  <button class="banner-btn next" type="button" aria-label="Sonraki" id="bannerNext">›</button>
+
+  <div class="banner-dots" role="tablist" aria-label="Banner noktaları" id="bannerDots"></div>
+</div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="line"></div>
+        © <span id="year"></span> Selin Nur Polat — Portfolyo
+      </footer>
+    </div>
+  </section>
+
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mix video button
+    const bindVideo = (inputId, btnId) => {
+      const input = document.getElementById(inputId);
+      const btn = document.getElementById(btnId);
+      if(!input || !btn) return;
+      const update = () => {
+        const v = (input.value || "").trim();
+        btn.href = v ? v : "#";
+        btn.style.opacity = v ? "1" : ".6";
+        btn.style.pointerEvents = v ? "auto" : "none";
+      };
+      input.addEventListener("input", update);
+      update();
+    };
+    bindVideo("mix-video", "mix-open");
+
+    // Mix Photo set
+    const setPhoto = (urlInputId, targetId) => {
+      const inp = document.getElementById(urlInputId);
+      const target = document.getElementById(targetId);
+      if(!inp || !target) return;
+      const url = (inp.value || "").trim();
+      if(!url){ alert("Fotoğraf linki boş."); return; }
+      target.innerHTML = `<img src="${url}" alt="Proje Fotoğrafı" style="width:100%; height:100%; object-fit:cover; border-radius:16px;">`;
+      target.style.borderStyle = "solid";
+    };
+    const mixBtn = document.getElementById("mix-set-photo");
+    if(mixBtn) mixBtn.addEventListener("click", () => setPhoto("mix-photo-url","mix-photo"));
+
+    // ---------------- CERTS (görsel = data-img, link = input) + localStorage ----------------
+    const STORAGE_KEY = "cert_links_v1";
+    const certPreview = document.getElementById("cert-preview");
+    const certLinkInput = document.getElementById("cert-link-url");
+    const certOpenLink = document.getElementById("cert-open-link");
+    const certSetLinkBtn = document.getElementById("cert-set-link");
+    const certResetBtn = document.getElementById("cert-reset");
+
+    let activeCertEl = null;
+
+    const loadStore = () => {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); }
+      catch { return {}; }
+    };
+    const saveStore = (store) => localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
+
+    const renderCertPreview = (imgUrl) => {
+      if(!certPreview) return;
+      if(!imgUrl){
+        certPreview.innerHTML = `
+          <div>
+            <b style="color:var(--text)">Görsel yok</b><br/>
+            <span style="font-size:12px">Bu sertifika için data-img ekleyebilirsin.</span>
+          </div>`;
+        certPreview.style.borderStyle = "dashed";
+        return;
+      }
+      certPreview.innerHTML = `<img src="${imgUrl}" alt="Sertifika görseli" style="max-width:100%; height:auto; display:block; border-radius:14px;">`;
+      certPreview.style.borderStyle = "solid";
+    };
+
+    const updateCertOpenLink = (url) => {
+      const v = (url || "").trim();
+      certOpenLink.href = v ? v : "#";
+      certOpenLink.style.opacity = v ? "1" : ".6";
+      certOpenLink.style.pointerEvents = v ? "auto" : "none";
+    };
+
+    const hydrateLinksFromStore = () => {
+      const store = loadStore();
+      document.querySelectorAll(".cert-item").forEach((el) => {
+        const key = el.dataset.key;
+        if(store[key]) el.dataset.link = store[key];
+      });
+    };
+
+    const selectCert = (el) => {
+      if(activeCertEl) activeCertEl.classList.remove("active");
+      activeCertEl = el;
+      el.classList.add("active");
+
+      renderCertPreview(el.dataset.img || "");
+      const link = el.dataset.link || "";
+      certLinkInput.value = link;
+      updateCertOpenLink(link);
+    };
+
+    hydrateLinksFromStore();
+
+    document.querySelectorAll(".cert-item").forEach((el) => {
+      el.addEventListener("click", () => selectCert(el));
+    });
+
+    if(certSetLinkBtn){
+      certSetLinkBtn.addEventListener("click", () => {
+        if(!activeCertEl){ alert("Önce soldan bir sertifika seç."); return; }
+        const url = (certLinkInput.value || "").trim();
+        activeCertEl.dataset.link = url;
+        updateCertOpenLink(url);
+
+        const store = loadStore();
+        store[activeCertEl.dataset.key] = url;
+        saveStore(store);
+      });
+    }
+
+    if(certResetBtn){
+      certResetBtn.addEventListener("click", () => {
+        if(!confirm("Tüm sertifika link kayıtları silinsin mi?")) return;
+        localStorage.removeItem(STORAGE_KEY);
+        document.querySelectorAll(".cert-item").forEach((el) => {
+          el.dataset.link = "";
+          el.classList.remove("active");
+        });
+        activeCertEl = null;
+        certLinkInput.value = "";
+        renderCertPreview("");
+        updateCertOpenLink("");
+        alert("Link kayıtları temizlendi.");
+      });
+    }
+
+    updateCertOpenLink("");
+
+    // ilk sertifikayı otomatik seç
+    const first = document.querySelector(".cert-item");
+    if(first) selectCert(first);
+    (() => {
+    const track = document.getElementById("bannerTrack");
+    const prevBtn = document.getElementById("bannerPrev");
+    const nextBtn = document.getElementById("bannerNext");
+    const dotsWrap = document.getElementById("bannerDots");
+    const root = track?.closest(".banner");
+
+    if(!track || !prevBtn || !nextBtn || !dotsWrap || !root) return;
+
+    const slides = Array.from(track.querySelectorAll(".banner-slide"));
+    const total = slides.length;
+    let index = 0;
+
+    // dots
+    const dots = slides.map((_, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "banner-dot" + (i === 0 ? " active" : "");
+      b.setAttribute("aria-label", `Görsel ${i+1}`);
+      b.addEventListener("click", () => go(i, true));
+      dotsWrap.appendChild(b);
+      return b;
+    });
+
+    const setActiveDot = (i) => {
+      dots.forEach((d, k) => d.classList.toggle("active", k === i));
+    };
+
+    const go = (i, user = false) => {
+      index = (i + total) % total;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      setActiveDot(index);
+      if(user) restart();
+    };
+
+    prevBtn.addEventListener("click", () => go(index - 1, true));
+    nextBtn.addEventListener("click", () => go(index + 1, true));
+
+    // autoplay
+    const INTERVAL = 2800;
+    let timer = null;
+
+    const start = () => {
+      stop();
+      timer = setInterval(() => go(index + 1, false), INTERVAL);
+    };
+    const stop = () => {
+      if(timer) { clearInterval(timer); timer = null; }
+    };
+    const restart = () => { start(); };
+
+    // swipe (touch)
+    let startX = 0;
+    let dragging = false;
+
+    root.addEventListener("touchstart", (e) => {
+      dragging = true;
+      startX = e.touches[0].clientX;
+      stop();
+    }, {passive:true});
+
+    root.addEventListener("touchmove", (e) => {
+      if(!dragging) return;
+      // (isteğe bağlı: sürüklerken canlı takip eklenebilir, şimdilik yok)
+    }, {passive:true});
+
+    root.addEventListener("touchend", (e) => {
+      if(!dragging) return;
+      dragging = false;
+      const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : startX;
+      const dx = endX - startX;
+
+      if(Math.abs(dx) > 40){
+        if(dx < 0) go(index + 1, true);
+        else go(index - 1, true);
+      }
+      start();
+    });
+
+    // başlat
+    go(0);
+    start();
+
+    // sekme değişince durdur/başlat (performans)
+    document.addEventListener("visibilitychange", () => {
+      if(document.hidden) stop();
+      else start();
+    });
+  })();
+  </script>
+</body>
+</html>
