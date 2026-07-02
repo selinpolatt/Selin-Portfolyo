@@ -23,6 +23,7 @@
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:0 18px;}
    /* --- Banner / Carousel --- */
+/* --- Banner / Carousel --- */
 .banner{
   position:relative;
   margin-top:10px;
@@ -32,11 +33,19 @@
   overflow:hidden;
   height:420px;
 }
+
 .banner-track{
   display:flex;
   width:100%;
   height:100%;
   transition: transform 420ms ease;
+}
+
+.banner-slide{
+  flex:0 0 100%;
+  width:100%;
+  height:100%;
+  overflow:hidden;
 }
 
 .banner-slide img{
@@ -47,17 +56,9 @@
   display:block;
 }
 
-.banner-slide img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
-  display:block;
-}
-
 @media (max-width: 700px){
   .banner{
-    height:230px;
+    height:320px;
   }
 }
 /* oklar */
