@@ -22,8 +22,7 @@
     html,body{margin:0; padding:0; background:radial-gradient(1100px 700px at 10% 0%, #162954 0%, var(--bg) 55%); color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;}
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:0 18px;}
-   /* --- Banner / Carousel --- */
-/* --- Banner / Carousel --- */
+  /* --- Banner / Carousel --- */
 .banner{
   position:relative;
   margin-top:10px;
@@ -38,14 +37,14 @@
   display:flex;
   width:100%;
   height:100%;
-  transition: transform 420ms ease;
+  transition:transform 420ms ease;
 }
 
 .banner-slide{
-  flex:0 0 100%;
+  min-width:100%;
   width:100%;
   height:100%;
-  overflow:hidden;
+  flex-shrink:0;
 }
 
 .banner-slide img{
@@ -56,7 +55,7 @@
   display:block;
 }
 
-@media (max-width: 700px){
+@media (max-width:700px){
   .banner{
     height:320px;
   }
