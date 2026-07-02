@@ -22,154 +22,114 @@
     html,body{margin:0; padding:0; background:radial-gradient(1100px 700px at 10% 0%, #162954 0%, var(--bg) 55%); color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;}
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:0 18px;}
-  /* --- Banner / Carousel --- */
-.banner{
-  position:relative;
-  margin-top:10px;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,.12);
-  background:#0b1220;
-  overflow:hidden;
-  height:360px;
-}
 
-.banner img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center center;
-  display:block;
-}
+    /* --- Banner / Carousel --- */
+    .banner{
+      position:relative;
+      margin-top:10px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background:#000;
+      overflow:hidden;
+      height:360px;
+    }
 
-@media (max-width:700px){
-  .banner{
-    height:300px;
-  }
-}
+    .banner-track{
+      display:flex;
+      width:100%;
+      height:100%;
+      transition: transform .5s ease;
+    }
 
-/* oklar */
-.banner-btn{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  width:38px;
-  height:38px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.18);
-  background:rgba(11,18,32,.55);
-  color:#eaf0ff;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:22px;
-  line-height:1;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 8px 22px rgba(0,0,0,.25);
-  z-index:5;
-}
+    .banner-slide{
+      min-width:100%;
+      max-width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#000;
+    }
 
-.banner-btn:hover{ transform:translateY(-50%) scale(1.03); }
-.banner-btn:active{ transform:translateY(-50%) scale(0.98); }
+    /* Her görsel eşit alan içinde, dikey fotoğraflar taşmadan sığdırılır */
+    .banner-slide img{
+      max-width:100%;
+      max-height:100%;
+      width:auto;
+      height:auto;
+      object-fit:contain;
+      display:block;
+    }
 
-.banner-btn.prev{ left:10px; }
-.banner-btn.next{ right:10px; }
+    @media (max-width:700px){
+      .banner{
+        height:420px;
+      }
+    }
 
-/* noktalar */
-.banner-dots{
-  position:absolute;
-  left:50%;
-  bottom:10px;
-  transform:translateX(-50%);
-  display:flex;
-  gap:7px;
-  padding:8px 10px;
-  border-radius:999px;
-  background:rgba(11,18,32,.45);
-  border:1px solid rgba(255,255,255,.12);
-  backdrop-filter: blur(8px);
-  z-index:5;
-}
+    /* oklar */
+    .banner-btn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:38px;
+      height:38px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(11,18,32,.55);
+      color:#eaf0ff;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+      line-height:1;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 22px rgba(0,0,0,.25);
+      z-index:5;
+    }
 
-.banner-dot{
-  width:8px;
-  height:8px;
-  border-radius:99px;
-  border:1px solid rgba(255,255,255,.35);
-  background:rgba(255,255,255,.10);
-  cursor:pointer;
-}
+    .banner-btn:hover{ transform:translateY(-50%) scale(1.03); }
+    .banner-btn:active{ transform:translateY(-50%) scale(0.98); }
 
-.banner-dot.active{
-  background:rgba(110,168,255,.85);
-  border-color: rgba(110,168,255,.95);
-  box-shadow:0 0 0 3px rgba(110,168,255,.18);
-}
+    .banner-btn.prev{ left:10px; }
+    .banner-btn.next{ right:10px; }
 
-@media (max-width:520px){
-  .banner-btn{ width:34px; height:34px; font-size:20px; }
-}
-    
-/* oklar */
-.banner-btn{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  width:38px;
-  height:38px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.18);
-  background:rgba(11,18,32,.55);
-  color:#eaf0ff;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:22px;
-  line-height:1;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 8px 22px rgba(0,0,0,.25);
-}
+    /* noktalar */
+    .banner-dots{
+      position:absolute;
+      left:50%;
+      bottom:10px;
+      transform:translateX(-50%);
+      display:flex;
+      gap:7px;
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(11,18,32,.45);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(8px);
+      z-index:5;
+    }
 
-.banner-btn:hover{ transform:translateY(-50%) scale(1.03); }
-.banner-btn:active{ transform:translateY(-50%) scale(0.98); }
+    .banner-dot{
+      width:8px;
+      height:8px;
+      border-radius:99px;
+      border:1px solid rgba(255,255,255,.35);
+      background:rgba(255,255,255,.10);
+      cursor:pointer;
+      padding:0;
+    }
 
-.banner-btn.prev{ left:10px; }
-.banner-btn.next{ right:10px; }
+    .banner-dot.active{
+      background:rgba(110,168,255,.85);
+      border-color: rgba(110,168,255,.95);
+      box-shadow:0 0 0 3px rgba(110,168,255,.18);
+    }
 
-/* noktalar */
-.banner-dots{
-  position:absolute;
-  left:50%;
-  bottom:10px;
-  transform:translateX(-50%);
-  display:flex;
-  gap:7px;
-  padding:8px 10px;
-  border-radius:999px;
-  background:rgba(11,18,32,.45);
-  border:1px solid rgba(255,255,255,.12);
-  backdrop-filter: blur(8px);
-}
-
-.banner-dot{
-  width:8px;
-  height:8px;
-  border-radius:99px;
-  border:1px solid rgba(255,255,255,.35);
-  background:rgba(255,255,255,.10);
-  cursor:pointer;
-}
-.banner-dot.active{
-  background:rgba(110,168,255,.85);
-  border-color: rgba(110,168,255,.95);
-  box-shadow:0 0 0 3px rgba(110,168,255,.18);
-}
-
-@media (max-width: 520px){
-  .banner-btn{ width:34px; height:34px; font-size:20px; }
-}
-
+    @media (max-width:520px){
+      .banner-btn{ width:34px; height:34px; font-size:20px; }
+    }
 
     /* NAV */
     .nav{
@@ -328,33 +288,33 @@
     footer{padding:22px 0 36px; color:var(--muted); font-size:12px}
     .line{height:1px; background:var(--line); margin:14px 0}
     .lead-item{
-  display:grid;
-  grid-template-columns: 1fr 160px;
-  gap:14px;
-  align-items:center;
-}
+      display:grid;
+      grid-template-columns: 1fr 160px;
+      gap:14px;
+      align-items:center;
+    }
 
-.lead-media{
-  justify-self:end;
-  width:160px;
-  height:110px;
-  border-radius:14px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.03);
-}
+    .lead-media{
+      justify-self:end;
+      width:160px;
+      height:110px;
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.03);
+    }
 
-.lead-media img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
+    .lead-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
 
-@media (max-width: 700px){
-  .lead-item{ grid-template-columns: 1fr; }
-  .lead-media{ width:100%; height:180px; justify-self:stretch; }
-}
+    @media (max-width: 700px){
+      .lead-item{ grid-template-columns: 1fr; }
+      .lead-media{ width:100%; height:180px; justify-self:stretch; }
+    }
   </style>
 </head>
 <body>
@@ -383,7 +343,7 @@
       <div class="card hero-left">
         <h1>Selin Nur Polat</h1>
         <p class="subtitle">
-          Adana Alparslan Türkeş Bilim ve Teknoloji Üniversitesi’nde Havacılık ve Uzay Mühendisliği 4. sınıf öğrencisiyim. 
+          Adana Alparslan Türkeş Bilim ve Teknoloji Üniversitesi’nde Havacılık ve Uzay Mühendisliği 4. sınıf öğrencisiyim.
           Öğrendiklerimi yalnızca teoride bırakmayıp proje süreçlerine taşıyan; problem tanımlama, sistematik ilerleme ve teknik dokümantasyon disiplinine önem veren bir mühendis adayıyım.
           Hedefim, ekip içinde sorumluluk alarak sahada karşılığı olan, ölçülebilir çıktılar üreten havacılık projelerinde aktif rol almak.
         </p>
@@ -438,9 +398,10 @@
       <div class="card p16">
         <p class="subtitle" style="margin:0">
           2001 yılında Antalya’da doğdum. 2021’de eğitim hayatım için Konya’dan Adana’ya gelerek Adana Alparslan Türkeş Bilim ve Teknoloji Üniversitesi’nde Havacılık ve Uzay Mühendisliği yolculuğuma başladım.
-           Bir yıl hazırlık eğitimimi tamamladıktan sonra bölüm derslerime geçtim. 
-           Üniversitenin 2. sınıfında arkadaşımla birlikte Endüstriyel Proje Geliştirme Topluluğu’nu kurduk ve kurulduğu günden bu yana başkan yardımcılığı görevini yürütüyorum. Bu süreçte topluluk çalışmalarımız kapsamında gönüllü stajlar yaparak hem ekip çalışması hem de proje üretme kültürünü sahada deneyimleme fırsatı buldum. Eğitim hayatım boyunca alanımla ilgili birçok eğitim ve seminere katılarak kendimi sürekli geliştirmeye odaklandım.
-            Şu anda 4. sınıf öğrencisi olarak hedefim; yetkin mühendislerle birlikte çalışabileceğim, sorumluluk alarak gerçek projelerde değer üretebileceğim bir ortamda kendimi daha da ileri taşımak.
+          Bir yıl hazırlık eğitimimi tamamladıktan sonra bölüm derslerime geçtim.
+          Üniversitenin 2. sınıfında arkadaşımla birlikte Endüstriyel Proje Geliştirme Topluluğu’nu kurduk ve kurulduğu günden bu yana başkan yardımcılığı görevini yürütüyorum. Bu süreçte topluluk çalışmalarımız kapsamında gönüllü stajlar yaparak hem ekip çalışması hem de proje üretme kültürünü sahada deneyimleme fırsatı buldum. Eğitim hayatım boyunca alanımla ilgili birçok eğitim ve seminere katılarak kendimi sürekli geliştirmeye odaklandım.
+          Şu anda 4. sınıf öğrencisi olarak hedefim; yetkin mühendislerle birlikte çalışabileceğim, sorumluluk alarak gerçek projelerde değer üretebileceğim bir ortamda kendimi daha da ileri taşımak.
+        </p>
       </div>
     </div>
   </section>
@@ -517,7 +478,6 @@
               <b style="font-size:14px">Mixture System</b>
               <div class="tag">Süreç / Otomasyon Mantığı</div>
             </div>
-          
           </div>
 
           <div class="kv">
@@ -533,34 +493,30 @@
             <img src="Görseller/mixturesystem.jpg" alt="Mixture System Proje Fotoğrafı"
                  style="width:100%; height:100%; object-fit:cover; border-radius:16px;" />
           </div>
-
-        
-
-          
         </div>
       </article>
 
- </section>
+    </div>
+  </section>
 
   <!-- LEADERSHIP -->
   <section id="leadership">
     <div class="wrap">
       <div class="section-title">
         <h2>Liderlik</h2>
-        
       </div>
       <div class="card p16">
         <ul class="list">
-         <li class="item lead-item">
-  <div>
-    <b>Endüstriyel Proje Geliştirme Kulübü – Başkan Yardımcısı (2024–…)</b>
-    <p>• Ekip koordinasyonu ve görev takibi<br/>• Proje planlama ve çıktıların düzenli dokümantasyonu<br/>• Çalışma/etkinlik organizasyonu</p>
-  </div>
+          <li class="item lead-item">
+            <div>
+              <b>Endüstriyel Proje Geliştirme Kulübü – Başkan Yardımcısı (2024–…)</b>
+              <p>• Ekip koordinasyonu ve görev takibi<br/>• Proje planlama ve çıktıların düzenli dokümantasyonu<br/>• Çalışma/etkinlik organizasyonu</p>
+            </div>
 
-  <div class="lead-media">
-    <img src="Görseller/epge.jpeg" alt="Liderlik görseli">
-  </div>
-</li>
+            <div class="lead-media">
+              <img src="Görseller/epge.jpeg" alt="Liderlik görseli">
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -571,7 +527,6 @@
     <div class="wrap">
       <div class="section-title">
         <h2>Sertifikalar / Eğitimler</h2>
-        
       </div>
 
       <div class="grid-2">
@@ -580,8 +535,6 @@
           <b style="font-size:13px">Sertifikalar / Eğitimler</b>
           <ul class="list" style="margin-top:12px">
 
-            <!-- Görselleri buradan ayarla: data-img="Görseller/sertifikalar/xxx.jpg" -->
-            
             <li class="item cert-item"
                 data-key="TUA Astro Hackathon"
                 data-title="TUA Astro Hackathon Adana 2'ncilik Sertifikası — Türkiye Uzay Ajansı(TUA) / TUMMIAD / VALENTURA "
@@ -590,8 +543,8 @@
                 data-link="">
               <b>TUA Astro Hackathon Adana 2'ncilik Sertifikası — Türkiye Uzay Ajansı(TUA) / TUMMIAD / VALENTURA </b>
               <p>28-29 Mart 2026</p>
-              </li>
-              
+            </li>
+
             <li class="item cert-item"
                 data-key="Havacılık Motor Okulu"
                 data-title="Havacılık Motor Okulu — TEI "
@@ -600,9 +553,9 @@
                 data-link="">
               <b>Havacılık Motor Okulu — TEI</b>
               <p>31.01.2026 - 23.05.2026</p>
-              </li>
-            
-          <li class="item cert-item"
+            </li>
+
+            <li class="item cert-item"
                 data-key="Ulusal İnovasyon Hackathonu"
                 data-title="Ulusal İnovasyon Hackathonu 1'incilik Sertifikası  — Mersin Üniversitesi / TÜBİTAK "
                 data-date="16-17 Mayıs 2026"
@@ -611,7 +564,7 @@
               <b>Ulusal İnovasyon Hackathonu 1'incilik Sertifikası  — Mersin Üniversitesi / TÜBİTAK</b>
               <p>16-17 Mayıs 2026</p>
             </li>
-          
+
             <li class="item cert-item"
                 data-key="fikrim-gelecek-2025"
                 data-title="Fikrim Gelecek Hackathonu — UNDP / T.C. Dışişleri Bakanlığı / Türkiye Belediyeler Birliği (TBB)"
@@ -631,7 +584,7 @@
               <b>Geleceğin Sürdürülebilir Şehirleri Hackathonu — Teknofest Başarı Sertifikası / T.C. Sanayi ve Teknoloji Bakanlığı / Türkiye Teknoloji Takımı</b>
               <p>17 Kasım 2025</p>
             </li>
-            
+
             <li class="item cert-item"
                 data-key="tubitak2237a-2026"
                 data-title="Endüstride Dijital Dönüşüm ve Yapay Zekâ Sistem Entegrasyonu — TÜBİTAK 2237-A"
@@ -641,7 +594,7 @@
               <b>Endüstride Dijital Dönüşüm ve Yapay Zekâ Sistem Entegrasyonu — TÜBİTAK 2237-A</b>
               <p>2–6 Şubat 2026</p>
             </li>
-            
+
             <li class="item cert-item"
                 data-key="unides-2025"
                 data-title="ÜNİDES — T.C. Gençlik ve Spor Bakanlığı"
@@ -651,8 +604,8 @@
               <b>ÜNİDES — T.C. Gençlik ve Spor Bakanlığı</b>
               <p>Aralık 2025</p>
             </li>
-            
-<li class="item cert-item"
+
+            <li class="item cert-item"
                 data-key="btk-ai-2026"
                 data-title="Yapay Zekâya Giriş — BTK Akademi"
                 data-date="4 Şubat 2026"
@@ -688,7 +641,6 @@
         <!-- SAĞ: Sadece görsel + link -->
         <div class="card p16" id="cert-panel">
           <b style="font-size:13px">Sertifika Önizleme</b>
-          <p class="note" style="margin-top:10px">
 
           <div class="ph" id="cert-preview" style="min-height:260px; margin-top:12px">
             <div>
@@ -725,50 +677,38 @@
             ☎️ 0535 053 8808<br/>
             📍 Seyhan / Adana
           </p>
-         <div class="card p16">
-  <b style="font-size:13px">Medya Alanı</b>
-  <p class="note" style="margin-top:10px"></p>
+        </div>
 
-  <div class="banner" aria-label="Medya banner">
-    <img id="bannerImage" src="Görseller/tua2.jpg" alt="Medya görseli">
+        <div class="card p16">
+          <b style="font-size:13px">Medya Alanı</b>
 
-    <button class="banner-btn prev" type="button" aria-label="Önceki" id="bannerPrev">‹</button>
-    <button class="banner-btn next" type="button" aria-label="Sonraki" id="bannerNext">›</button>
+          <div class="banner" aria-label="Medya banner">
+            <div class="banner-track" id="bannerTrack">
+              <div class="banner-slide">
+                <img src="Görseller/tua2.jpg" alt="Banner görsel 1">
+              </div>
+              <div class="banner-slide">
+                <img src="Görseller/mersin1.jpg" alt="Banner görsel 2">
+              </div>
+              <div class="banner-slide">
+                <img src="Görseller/undpben.jpg" alt="Banner görsel 3">
+              </div>
+              <div class="banner-slide">
+                <img src="Görseller/unidesben.jpg" alt="Banner görsel 4">
+              </div>
+              <div class="banner-slide">
+                <img src="Görseller/undp2.jpg" alt="Banner görsel 5">
+              </div>
+              <div class="banner-slide">
+                <img src="Görseller/tubitak26.jpeg" alt="Banner görsel 6">
+              </div>
+            </div>
 
-    <div class="banner-dots" role="tablist" aria-label="Banner noktaları" id="bannerDots"></div>
-  </div>
-</div>
-    <div class="banner-slide">
-      <img src="Görseller/tua2.jpg" alt="Banner görsel 1">
-    </div>
+            <button class="banner-btn prev" type="button" aria-label="Önceki" id="bannerPrev">‹</button>
+            <button class="banner-btn next" type="button" aria-label="Sonraki" id="bannerNext">›</button>
 
-    <div class="banner-slide">
-      <img src="Görseller/mersin1.jpg" alt="Banner görsel 2">
-    </div>
-
-    <div class="banner-slide">
-      <img src="Görseller/undpben.jpg" alt="Banner görsel 3">
-    </div>
-
-    <div class="banner-slide">
-      <img src="Görseller/unidesben.jpg" alt="Banner görsel 4">
-    </div>
-
-    <div class="banner-slide">
-      <img src="Görseller/undp2.jpg" alt="Banner görsel 5">
-    </div>
-
-    <div class="banner-slide">
-      <img src="Görseller/tubitak26.jpeg" alt="Banner görsel 6">
-    </div>
-
-  </div>
-
-  <button class="banner-btn prev" type="button" aria-label="Önceki" id="bannerPrev">‹</button>
-  <button class="banner-btn next" type="button" aria-label="Sonraki" id="bannerNext">›</button>
-
-   <div class="banner-dots" role="tablist" aria-label="Banner noktaları" id="bannerDots"></div>
-</div>
+            <div class="banner-dots" role="tablist" aria-label="Banner noktaları" id="bannerDots"></div>
+          </div>
         </div>
       </div>
 
@@ -909,97 +849,92 @@
     // ilk sertifikayı otomatik seç
     const first = document.querySelector(".cert-item");
     if(first) selectCert(first);
+
+    // ---------------- BANNER CAROUSEL ----------------
     (() => {
-    const track = document.getElementById("bannerTrack");
-    const prevBtn = document.getElementById("bannerPrev");
-    const nextBtn = document.getElementById("bannerNext");
-    const dotsWrap = document.getElementById("bannerDots");
-    const root = track?.closest(".banner");
+      const track = document.getElementById("bannerTrack");
+      const prevBtn = document.getElementById("bannerPrev");
+      const nextBtn = document.getElementById("bannerNext");
+      const dotsWrap = document.getElementById("bannerDots");
+      const root = track ? track.closest(".banner") : null;
 
-    if(!track || !prevBtn || !nextBtn || !dotsWrap || !root) return;
+      if(!track || !prevBtn || !nextBtn || !dotsWrap || !root) return;
 
-    const slides = Array.from(track.querySelectorAll(".banner-slide"));
-    const total = slides.length;
-    let index = 0;
+      const slides = Array.from(track.querySelectorAll(".banner-slide"));
+      const total = slides.length;
+      let index = 0;
 
-    // dots
-    const dots = slides.map((_, i) => {
-      const b = document.createElement("button");
-      b.type = "button";
-      b.className = "banner-dot" + (i === 0 ? " active" : "");
-      b.setAttribute("aria-label", `Görsel ${i+1}`);
-      b.addEventListener("click", () => go(i, true));
-      dotsWrap.appendChild(b);
-      return b;
-    });
+      // dots
+      const dots = slides.map((_, i) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "banner-dot" + (i === 0 ? " active" : "");
+        b.setAttribute("aria-label", `Görsel ${i+1}`);
+        b.addEventListener("click", () => go(i, true));
+        dotsWrap.appendChild(b);
+        return b;
+      });
 
-    const setActiveDot = (i) => {
-      dots.forEach((d, k) => d.classList.toggle("active", k === i));
-    };
+      const setActiveDot = (i) => {
+        dots.forEach((d, k) => d.classList.toggle("active", k === i));
+      };
 
-    const go = (i, user = false) => {
-      index = (i + total) % total;
-      track.style.transform = `translateX(-${index * 100}%)`;
-      setActiveDot(index);
-      if(user) restart();
-    };
+      const go = (i, user = false) => {
+        index = (i + total) % total;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        setActiveDot(index);
+        if(user) restart();
+      };
 
-    prevBtn.addEventListener("click", () => go(index - 1, true));
-    nextBtn.addEventListener("click", () => go(index + 1, true));
+      prevBtn.addEventListener("click", () => go(index - 1, true));
+      nextBtn.addEventListener("click", () => go(index + 1, true));
 
-    // autoplay
-    const INTERVAL = 2800;
-    let timer = null;
+      // autoplay
+      const INTERVAL = 2800;
+      let timer = null;
 
-    const start = () => {
-      stop();
-      timer = setInterval(() => go(index + 1, false), INTERVAL);
-    };
-    const stop = () => {
-      if(timer) { clearInterval(timer); timer = null; }
-    };
-    const restart = () => { start(); };
+      const start = () => {
+        stop();
+        timer = setInterval(() => go(index + 1, false), INTERVAL);
+      };
+      const stop = () => {
+        if(timer) { clearInterval(timer); timer = null; }
+      };
+      const restart = () => { start(); };
 
-    // swipe (touch)
-    let startX = 0;
-    let dragging = false;
+      // swipe (touch)
+      let startX = 0;
+      let dragging = false;
 
-    root.addEventListener("touchstart", (e) => {
-      dragging = true;
-      startX = e.touches[0].clientX;
-      stop();
-    }, {passive:true});
+      root.addEventListener("touchstart", (e) => {
+        dragging = true;
+        startX = e.touches[0].clientX;
+        stop();
+      }, {passive:true});
 
-    root.addEventListener("touchmove", (e) => {
-      if(!dragging) return;
-      // (isteğe bağlı: sürüklerken canlı takip eklenebilir, şimdilik yok)
-    }, {passive:true});
+      root.addEventListener("touchend", (e) => {
+        if(!dragging) return;
+        dragging = false;
+        const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : startX;
+        const dx = endX - startX;
 
-    root.addEventListener("touchend", (e) => {
-      if(!dragging) return;
-      dragging = false;
-      const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : startX;
-      const dx = endX - startX;
+        if(Math.abs(dx) > 40){
+          if(dx < 0) go(index + 1, true);
+          else go(index - 1, true);
+        }
+        start();
+      });
 
-      if(Math.abs(dx) > 40){
-        if(dx < 0) go(index + 1, true);
-        else go(index - 1, true);
-      }
+      // başlat
+      go(0);
       start();
-    });
 
-    // başlat
-    go(0);
-    start();
-
-    // sekme değişince durdur/başlat (performans)
-    document.addEventListener("visibilitychange", () => {
-      if(document.hidden) stop();
-      else start();
-    });
-  })();
+      // sekme değişince durdur/başlat (performans)
+      document.addEventListener("visibilitychange", () => {
+        if(document.hidden) stop();
+        else start();
+      });
+    })();
   </script>
 </body>
 </html>
-
-
