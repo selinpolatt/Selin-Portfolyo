@@ -24,47 +24,42 @@
     .wrap{max-width:var(--max); margin:0 auto; padding:0 18px;}
 
     /* --- Banner / Carousel --- */
+    /* Dikey (portre) fotoğraflara uygun sabit oranlı kutu: her slayt tam olarak aynı boyutta */
     .banner{
       position:relative;
-      margin-top:10px;
+      margin:10px auto 0;
       border-radius:16px;
       border:1px solid rgba(255,255,255,.12);
       background:#000;
       overflow:hidden;
-      height:360px;
+      width:100%;
+      max-width:360px;
+      aspect-ratio: 3 / 4;
     }
 
     .banner-track{
       display:flex;
+      flex-wrap:nowrap;
       width:100%;
       height:100%;
       transition: transform .5s ease;
     }
 
     .banner-slide{
-      min-width:100%;
-      max-width:100%;
+      flex:0 0 100%;
+      width:100%;
       height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      display:block;
       background:#000;
     }
 
-    /* Her görsel eşit alan içinde, dikey fotoğraflar taşmadan sığdırılır */
+    /* Her görsel, sabit boyutlu kutuyu tam dolduracak şekilde kırpılır (kutu boyu hep aynı) */
     .banner-slide img{
-      max-width:100%;
-      max-height:100%;
-      width:auto;
-      height:auto;
-      object-fit:contain;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
       display:block;
-    }
-
-    @media (max-width:700px){
-      .banner{
-        height:420px;
-      }
     }
 
     /* oklar */
